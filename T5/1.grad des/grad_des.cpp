@@ -1,4 +1,3 @@
-// Программа для поиска минимума функции методом градиентного спуска
 // f(x, y) = x^3 - x*y + y^2 - 2x + 3y - 4
 // grad f = [3*x^2 - y - 2; -x + 2y + 3]
 // f(x, y) -> min
@@ -19,19 +18,6 @@ const double EPSILON = pow(2.0, -60);  // Погрешность для усло
 // Строка с коэффициентами полинома
 // f(x, y) = x^3 - x*y + y^2 - 2x + 3y - 4
 const string FUNCTION_COEFFICIENTS = "6 3 0 1 1 1 -1 0 2 1 1 0 -2 0 1 3 0 0 -4";
-
-/**
- * Вычисление евклидовой нормы вектора
- * @param vector Входной вектор
- * @return Норма вектора
- */
-double calculateNorm(const vector<double>& vec) {
-    double sumSquares = 0.0;
-    for (const auto& component : vec) {
-        sumSquares += component * component;
-    }
-    return sqrt(sumSquares);
-}
 
 /**
  * Проверка условий остановки алгоритма

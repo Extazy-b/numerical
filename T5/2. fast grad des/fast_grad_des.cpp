@@ -7,22 +7,13 @@
 #include <fstream>
 #include <cmath>
 #include <string>
-#include "math.cpp"
+#include "../math.cpp"
 
 using namespace std;
 
 const double MAX_STEP = pow(2, 0);  // Максимальный размер шага
 const float EPSILON = pow(2, -60);  // Точность вычислений
 Poly poly(2, 3);
-
-// Вычисление нормы вектора
-double calculateNorm(const vector<double>& vec) {
-    double result = 0.0;
-    for (size_t i = 0; i < vec.size(); ++i) {
-        result += vec[i] * vec[i];
-    }
-    return sqrt(result);
-}
 
 // Проверка критериев остановки алгоритма
 bool checkStoppingCriteria(const vector<double>& lastPoint,
