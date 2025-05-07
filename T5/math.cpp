@@ -1,5 +1,7 @@
 // Подключение необходимых заголовочных файлов
 #include <cmath>
+#include <algorithm>
+#include <numeric>
 #include "Poly.cpp"
 
 // Оператор сложения двух векторов чисел
@@ -131,4 +133,45 @@ double calculateNorm(const std::vector<double>& vec) {
         sumSquares += component * component;
     }
     return sqrt(sumSquares);
+}
+
+std::vector<std::vector<size_t>> permutations(unsigned int N) {
+    std::vector<size_t> perm(N);
+    std::iota(perm.begin(), perm.end(), 0);
+
+    std::vector<std::vector<size_t>> result;
+    result.reserve(1);
+    
+    do {
+        result.push_back(perm);
+    } while (std::next_permutation(perm.begin(), perm.end()));
+
+    return result;
+}
+
+bool isEvenPermutation(const std::vector<size_t>& perm) {
+    size_t invCount = 0;
+    for (size_t i = 0; i < perm.size(); ++i) {
+        for (size_t j = i + 1; j < perm.size(); ++j) {
+            if (perm[i] > perm[j]) {
+                ++invCount;
+            }
+        }
+    }
+    return (invCount % 2) == 0;
+}
+
+Poly Hessian(const Poly& function){
+    size_t dim = function.getVarc();
+    std::vector <std::vector <size_t>> indices = permutations(dim);
+    Poly res(dim, 0, 0);
+    for (std::vector <size_t> perm: indices){
+        Poly tmp = pow(Poly(dim, 0, -1), (float) isEvenPermutation(perm));
+        for (size_t i = 0; i < dim; i++)
+        {
+            tmp = tmp * derivate(derivate(function, i), perm[i]);
+        }
+        res = res + tmp;
+    }
+    return res;
 }
