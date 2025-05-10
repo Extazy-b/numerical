@@ -23,7 +23,7 @@ public:
      * @param degree - степень полинома
      * @param defaultValue - значение по умолчанию для коэффициентов
      */
-    Poly(int variablesCount=0, int degree=0, double defaultValue = 0.0) 
+    Poly(int variablesCount = 0, int degree = 0, double defaultValue = 0.0) 
         : varc_(variablesCount), deg_(degree + 1) {
         len_ = static_cast<std::size_t>(std::pow(deg_, varc_));
         coefs_.resize(len_, defaultValue);
