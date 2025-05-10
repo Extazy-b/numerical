@@ -1,4 +1,4 @@
-#include "./math.cpp"
+#include "../libs/math.cpp"
 
 using namespace std;
 

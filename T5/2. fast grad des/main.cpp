@@ -7,7 +7,7 @@
 #include <fstream>
 #include <cmath>
 #include <string>
-#include "../math.cpp"
+#include "../libs/math.cpp"
 
 using namespace std;
 

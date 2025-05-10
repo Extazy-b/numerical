@@ -175,3 +175,7 @@ Poly Hessian(const Poly& function){
     }
     return res;
 }
+
+/* std::vector <std::vector <double>> operator+(const std::vector <std::vector <double>>& lhs, const std::vector <std::vector <double>>& rhs){
+    if (lhs.size() == rhs.size()) &&
+} */
