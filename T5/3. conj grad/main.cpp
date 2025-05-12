@@ -5,7 +5,6 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
-#include <cmath>
 #include <string>
 #include "../libs/math.cpp"
 
