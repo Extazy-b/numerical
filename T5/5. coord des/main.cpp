@@ -1,3 +1,11 @@
+/*
+Метод координатного спуска:
+1. Начинаем с произвольной точки
+2. Поочередно двигаемся вдоль каждой координатной оси
+3. В каждом направлении ищем минимум функции с заданным шагом
+4. Процесс повторяется, пока не достигнем точки, где изменения меньше заданной точности
+*/
+
 #include "../libs/math.cpp"
 #include <fstream>
 #include <iostream>
@@ -14,65 +22,55 @@ vector<double> old_point(dimension, 0);
 const double EPSILON = pow(2, -60);
 const double STEP = pow(2, -5);
 
-int main(){
-    bool flag = false;
+size_t k;
 
+void logging(){
+    cout << endl << "== Iter: " << k << " ==" << endl;
+    cout << "new point: " << new_point << endl;
+    cout << "points delta: " << calculateNorm(new_point - old_point) << endl;
+    cout << "value: " << targetFunction.evaluate(new_point) << endl;
+
+    logFile << endl << "== Iter: " << k << " ==" << endl;
+    logFile << "new point: " << new_point << endl;
+    logFile << "points delta: " << calculateNorm(new_point - old_point) << endl;
+    logFile << "value: " << targetFunction.evaluate(new_point) << endl;
+}
+
+int main(){
     targetFunction.setCoefs("6 3 0 1 1 1 -1 0 2 1 1 0 -2 0 1 3 0 0 -4");
     vector<Poly> gradient = Nabla(targetFunction);
 
-    cout << "Начало поиска минимума функции" << endl;
-    logFile << "Начало поиска минимума функции" << endl;
+    srand(time(0));
 
-    double k=1;
+    cout << "Function:" << endl << targetFunction << endl;
+    cout << "EPSILON: " << EPSILON << endl;
+    cout << "STEP: " << STEP << endl;
+    cout << "press enter to start calculating" << endl;
 
-    while (true){
-        for (size_t i = 0; i < dimension; i++)
-        {
-            cout << "Итерация: " << k << endl;
-            logFile << "Итерация: " << k << endl;
+    logFile << "Function:" << endl << targetFunction << endl;
+    logFile << "EPSILON: " << EPSILON << endl;
+    logFile << "STEP: " << STEP << endl;
 
-            copy(new_point.begin(), new_point.end(), old_point.begin());
-            new_point[i] = old_point[i] - STEP * gradient[i].evaluate(old_point);
-            
-            cout << "Итерация по координате " << i + 1 << ":" << endl;
-            cout << "Старая точка: " << old_point << endl;
-            cout << "Новая точка: " << new_point << endl;
-            cout << "Значение: " << targetFunction.evaluate(new_point) << endl;
-            cout << "Изменение значения: " << abs(targetFunction.evaluate(new_point) - targetFunction.evaluate(old_point)) << endl;
-            
-            logFile << "Итерация по координате " << i + 1 << ":" << endl;
-            logFile << "Старая точка: " << old_point << endl;
-            logFile << "Новая точка: " << new_point << endl;
-            logFile << "Значение: " << targetFunction.evaluate(new_point) << endl;
-            logFile << "Изменение значения: " << abs(targetFunction.evaluate(new_point) - targetFunction.evaluate(old_point)) << endl;
-            
-            k++;
-            cout << endl;
-            logFile << endl;
+    cin.get();
 
-            if (calculateNorm(old_point - new_point) < EPSILON){
-                cout << "Достигнута требуемая точность по норме разности точек" << endl;
-                logFile << "Достигнута требуемая точность по норме разности точек" << endl;
-                flag = true;
-                break;
-            }
-            if (abs(targetFunction.evaluate(old_point) - targetFunction.evaluate(new_point)) < EPSILON){
-                cout << "Достигнута требуемая точность по значению функции" << endl;
-                logFile << "Достигнута требуемая точность по значению функции" << endl;
-                flag = true;
-                break;
-            }
-        }
-        if (flag) break;
+    size_t i = 0;
+    while (true){  
+        // i = (i < dimension - 1) ? i+1 : 0;
+        i = rand() % dimension;
+        
+        new_point[i] = old_point[i] - STEP * gradient[i].evaluate(old_point);
+        
+        k++;
+        
+        logging();
+
+        if (calculateNorm(old_point - new_point) < EPSILON) break;
+        if (abs(targetFunction.evaluate(old_point) - targetFunction.evaluate(new_point)) < EPSILON) break;
+
+        copy(new_point.begin(), new_point.end(), old_point.begin());
     }
 
-    cout << "Найден минимум в точке: " << new_point << endl;
-    cout << "Значение функции в минимуме: " << targetFunction.evaluate(new_point) << endl;
-    
-    logFile << "Найден минимум в точке: " << new_point << endl;
-    logFile << "Значение функции в минимуме: " << targetFunction.evaluate(new_point) << endl;
-
-    logFile.close();
-
+    cout << endl << "END" << endl;
+    logFile.close(); 
     return 0;
 }

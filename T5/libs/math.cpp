@@ -183,7 +183,7 @@ std::vector<std::vector<double>> operator*(const double& scalar, const std::vect
     std::vector<std::vector<double>> res(dim1, std::vector<double> (dim2, 0));
     for (size_t i = 0; i < dim1; i++)
     {
-        for (size_t j = i; j < dim2; j++)
+        for (size_t j = 0; j < dim2; j++)
         {
             res[i][j] = scalar * matrix[i][j];
         }
@@ -199,7 +199,7 @@ std::vector<std::vector<double>> operator+(const std::vector<std::vector<double>
     std::vector<std::vector<double>> res(lhs.size(), std::vector<double>(lhs[0].size(), 0));
     for (size_t i = 0; i < lhs.size(); i++)
     {
-        for (size_t j = i; j < rhs.size(); j++)
+        for (size_t j = 0; j < rhs[0].size(); j++)
         {
             res[i][j] = lhs[i][j] + rhs[i][j];
         }
@@ -219,7 +219,7 @@ std::vector<std::vector<double>> operator*(const std::vector<std::vector<double>
     std::vector<std::vector<double>> res(lhs.size(), std::vector<double>(rhs[0].size(), 0));
     for (size_t i = 0; i < lhs.size(); i++)
     {
-        for (size_t j = i; j < rhs[0].size(); j++)
+        for (size_t j = 0; j < rhs[0].size(); j++)
         {
             for (size_t k = 0; k < lhs[0].size(); k++)
             {
@@ -232,7 +232,7 @@ std::vector<std::vector<double>> operator*(const std::vector<std::vector<double>
 
 std::ostream& operator<<(std::ostream& os, const std::vector<std::vector<double>>& self) {
     for (int i = 0; i < self.size(); i++) {
-        os << self[i] << std::endl;
+        os << '|' << self[i] << '|' << std::endl;
     }
     return os;
 }
@@ -286,4 +286,17 @@ double Newton(Poly function, double start_point, double minVal, double maxVal, d
     }
 
     return step;
+}
+
+
+std::vector<std::vector<double>> transpose(const std::vector<std::vector<double>>& self){
+    std::vector<std::vector<double>> res(self.size(), std::vector<double>(self[0].size(), 0));
+    for (size_t i = 0; i < res.size(); i++)
+    {
+        for (size_t j = 0; j < res[0].size(); j++)
+        {
+            res[i][j] = self[j][i];
+        }
+    }
+    return res;
 }
