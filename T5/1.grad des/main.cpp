@@ -21,8 +21,6 @@ vector<double> gradientValue(dimension, 0);
 size_t i;
 
 void logging(){
-    i++;
-
     cout << endl << "== Iter: " << i << " ==" << endl;
     cout << "new point: " << new_point << endl;
     cout << "points delta: " << calculateNorm(new_point - old_point) << endl;
@@ -43,8 +41,6 @@ int main(){
     vector<Poly> gradient = Nabla(targetFunction);
     copy(start_point.begin(), start_point.end(), old_point.begin());
     copy(start_point.begin(), start_point.end(), new_point.begin());
-    
-    size_t i = 0;
 
     cout << "Function:" << endl << targetFunction << endl;
     cout << "EPSILON: " << EPSILON << endl;
@@ -58,6 +54,8 @@ int main(){
     cin.get();
 
     while (true){
+        i++;
+    
         gradientValue = evaluate2list(gradient, old_point);
         new_point = old_point - STEP * gradientValue;
 

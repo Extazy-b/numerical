@@ -236,3 +236,54 @@ std::ostream& operator<<(std::ostream& os, const std::vector<std::vector<double>
     }
     return os;
 }
+
+double goldenSectionSearch(double a, double b, double epsilon, const Poly& func) {
+    const double PHI = (sqrt(5) - 1) / 2;
+
+    double var1 = b - PHI * (b - a);
+    double var2 = a + PHI * (b - a);
+    double y1 = func.evaluate(std::vector<double>(1, var1));
+    double y2 = func.evaluate(std::vector<double>(1, var2));
+    
+    while ((b - a) > epsilon) {
+        if (y1 < y2) {
+            b = var2;
+            var2 = var1;
+            y2 = y1;
+
+            var1 = b - PHI * (b - a);
+            y1 = func.evaluate(std::vector<double>(1, var1));
+        } else {
+            a = var1;
+            var1 = var2;
+            y1 = y2;
+
+            var2 = a + PHI * (b - a);
+            y2 = func.evaluate(std::vector<double>(1, var2));
+        }
+    }
+
+    double result = (a + b) / 2;
+    return result;
+}
+
+double Newton(Poly function, double start_point, double minVal, double maxVal, double EPSILON){
+    Poly der1 = derivate(function);
+    Poly der2 = derivate(der1);\
+
+    double step = start_point;
+    double delta;
+ 
+    while (true) {
+        if (step > maxVal) step = maxVal; break;
+        
+        if (step < minVal) step = minVal; break;
+        
+        delta = der1.evaluate(std::vector<double>(1, step)) / der2.evaluate(std::vector<double>(1, step));
+        step -= delta;
+        
+        if (abs(delta) < EPSILON) break;
+    }
+
+    return step;
+}

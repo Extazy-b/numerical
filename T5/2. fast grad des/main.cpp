@@ -1,223 +1,121 @@
-// f(x, y) = x^3 - x*y + y^2 - 2x + 3y - 4
-// f(x, y) -> min
-// Начальная точка X0 = (0, 0)
-
-#include <vector>
-#include <iostream>
-#include <fstream>
-#include <cmath>
-#include <string>
-#include <iomanip>
 #include "../libs/math.cpp"
+#include <fstream>
+#include <iostream>
 
 using namespace std;
 
-const double MAX_STEP = pow(2, 0);  // Максимальный размер шага
-const float EPSILON = pow(2, -60);  // Точность вычислений
-Poly poly(2, 3);
+ofstream logFile("output.log");
 
-// Проверка критериев остановки алгоритма
-bool checkStoppingCriteria(const vector<double>& lastPoint,
-                          const vector<double>& nextPoint,
-                          const Poly& func,
-                          const vector<Poly>& grad) {
-    double normDiff = calculateNorm(lastPoint - nextPoint);
-    double normGrad = calculateNorm(evaluate2list(grad, nextPoint));
-    double funcDiff = abs(func.evaluate(lastPoint) - func.evaluate(nextPoint));
-    
-    ofstream logFile("output.log", ios::app);
-    logFile << "Проверка критериев остановки:" << endl;
-    logFile << "Норма разности точек: " << scientific << normDiff << endl;
-    logFile << "Норма градиента: " << scientific << normGrad << endl;
-    logFile << "Разность значений функции: " << scientific << funcDiff << endl;
-    logFile.close();
+int dimension = 2;
+Poly targetFunction(dimension, 3, 0);
+vector<double> start_point(dimension, 0);
 
-    if (normDiff < EPSILON) {
-        return true;
+const double EPSILON = pow(2, -60);
+const double MIN_STEP = pow(2, -60);
+const double MAX_STEP = pow(2, 0);
+
+vector<double> old_point(dimension, 0);
+vector<double> new_point(dimension, 0);
+vector<Poly> gradient(dimension, Poly());
+vector<double> gradientValue(dimension, 0);
+double step;
+
+
+size_t i;
+
+Poly getDirectionFunction(vector<double> point){
+    Poly function(1, 0, 0);
+    vector<Poly> extraFunction(dimension, Poly(1, 0, 0));
+
+    for (size_t i = 0; i < dimension; i++)
+    {
+        extraFunction[i] = Poly(0, 0, point[i]) - gradientValue[i] * (Poly(1, 1, 1) - Poly(1, 0, 1));
     }
-    if (normGrad < EPSILON) {
-        return true;
+
+    cout << gradient << endl;
+    cout << gradientValue << endl;
+    cout << extraFunction << endl;
+
+    for (size_t ind = 0; ind < targetFunction.getLen(); ind++)
+    {
+        Poly summand(0, 0, targetFunction[ind]);
+        vector<int> indices = targetFunction.ind2multyind(ind);
+        for (size_t subind = 0; subind < dimension; subind++){
+            summand = summand * pow(extraFunction[subind], indices[subind]);
+        }
+        function  = function + summand;
     }
-    if (funcDiff < EPSILON) {
-        return true;
-    }
-    return false;
+
+    return function;
 }
 
-// Метод золотого сечения для поиска минимума функции одной переменной
-double goldenSectionSearch(double a, double b, double epsilon, const Poly& func, const vector<double>& point) {
-    const double PHI = (sqrt(5) - 1) / 2;  // Золотое сечение
-    size_t dim = point.size();
+double getOptimalStep(vector <double> point){
+    double step;
+    Poly DirectionFunction = getDirectionFunction(point);
+    double delta;
 
-    ofstream logFile("output.log", ios::app);
-    logFile << "\tМетод золотого сечения:" << endl;
-    logFile << "\tНачальный интервал: [" << a << ", " << b << "]" << endl;
+    double startStep = goldenSectionSearch(MIN_STEP, MAX_STEP, pow(2, -10), DirectionFunction);
+    step = Newton(DirectionFunction, startStep, MIN_STEP, MAX_STEP, EPSILON);
 
-    vector<double> arg1(dim + 1, 0);
-    vector<double> arg2(dim + 1, 0);
-    copy(point.begin(), point.end(), arg1.begin());
-    copy(point.begin(), point.end(), arg2.begin());
-
-    arg1[dim] = b - PHI * (b - a);
-    arg2[dim] = a + PHI * (b - a);
-    double y1 = func.evaluate(arg1);
-    double y2 = func.evaluate(arg2);
-    
-    while ((b - a) > epsilon) {
-        logFile << "\tИнтервал: [" << a << ", " << b << "], длина: " << b-a << endl;
-        
-        if (y1 < y2) {
-            b = arg2[dim];
-            arg2[dim] = arg1[dim];
-            y2 = y1;
-
-            arg1[dim] = b - PHI * (b - a);
-            y1 = func.evaluate(arg1);
-        } else {
-            a = arg1[dim];
-            arg1[dim] = arg2[dim];
-            y1 = y2;
-
-            arg2[dim] = a + PHI * (b - a);
-            y2 = func.evaluate(arg2);
-        }
-    }
-
-    double result = (a + b) / 2;
-    logFile << "\tНайденный оптимальный шаг: " << result << endl;
-    logFile.close();
-    return result;
+    return step;
 }
 
-// Получение оптимального размера шага методом Ньютона
-double getOptimalStep(const vector<double>& point, const Poly& func, const Poly& der1, const Poly& der2) {
-    ofstream logFile("output.log", ios::app);
-    logFile << "\nПоиск оптимального шага методом Ньютона:" << endl;
-    
-    double startStep = goldenSectionSearch(0, MAX_STEP, pow(2, 0), func, point);
-    logFile << "Начальное приближение шага: " << startStep << endl;
+void logging(){
+    i++;
 
-    size_t dim = point.size();
-    const double currentEpsilon = pow(2, -5);
-    double delta = currentEpsilon + 1;
-    vector<double> arg(dim + 1, 0);
-    copy(point.begin(), point.end(), arg.begin());
-    arg[dim] = startStep;
+    cout << endl << "== Iter: " << i << " ==" << endl;
+    cout << "step: " << step << endl;
+    cout << "new point: " << new_point << endl;
+    cout << "points delta: " << calculateNorm(new_point - old_point) << endl;
+    cout << "value: " << targetFunction.evaluate(new_point) << endl;
+    cout << "gradientValue: " << gradientValue << endl;
+    cout << "gradientNotm: " << calculateNorm(gradientValue) << endl;
 
-    while (abs(delta) > currentEpsilon) {
-        if (arg[dim] > MAX_STEP) {
-            arg[dim] = MAX_STEP;
-            logFile << "Достигнут максимальный размер шага" << endl;
-            break;
-        }
-        delta = der1.evaluate(arg) / der2.evaluate(arg);
-        arg[dim] -= delta;
-        logFile << "Текущий шаг: " << arg[dim] << ", delta: " << delta << endl;
-    }
-     
-    logFile << "Итоговый оптимальный шаг: " << arg[dim] << endl;
-    logFile.close();
-    return arg[dim];
+    logFile << endl << "== Iter: " << i << " ==" << endl;
+    logFile << "step: " << step << endl;
+    logFile << "new point: " << new_point << endl;
+    logFile << "points delta: " << calculateNorm(new_point - old_point) << endl;
+    logFile << "value: " << targetFunction.evaluate(new_point) << endl;
+    logFile << "gradientValue: " << gradientValue << endl;
+    logFile << "gradientNotm: " << calculateNorm(gradientValue) << endl;
 }
 
-int main(int argc, char* argv[]) {
-    ofstream logFile("output.log");
 
-    // Инициализация
-    poly.setCoefs("6 3 0 1 1 1 -1 0 2 1 1 0 -2 0 1 3 0 0 -4"); // f(x, y) = x^3 - x*y + y^2 - 2x + 3y - 4
+
+int main(){
+    targetFunction.setCoefs("6 3 0 1 1 1 -1 0 2 1 1 0 -2 0 1 3 0 0 -4");
+    gradient = Nabla(targetFunction);
+    copy(start_point.begin(), start_point.end(), old_point.begin());
+    copy(start_point.begin(), start_point.end(), new_point.begin());
+
+    cout << "Function:" << endl << targetFunction << endl;
+    cout << "EPSILON: " << EPSILON << endl;
+    cout << "MIN STEP: " << MIN_STEP << endl;
+    cout << "MAX STEP: " << MAX_STEP << endl;
+    cout << "press enter to start calculating" << endl;
+
+    logFile << "Function:" << endl << targetFunction << endl;
+    logFile << "EPSILON: " << EPSILON << endl;
+    logFile << "MIN STEP: " << MIN_STEP << endl;
+    logFile << "MAX STEP: " << MAX_STEP << endl;
     
-    const size_t variableCount = poly.getVarc();
-    vector<double> lastPoint(variableCount, 0);
-    vector<double> nextPoint(variableCount, 0);
-    
-    // Вычисление градиента
-    vector<Poly> grad = Nabla(poly);
-    
-    // Вспомогательная функция
-    Poly stepPoly(variableCount + 1, 1, 0);
-    vector<int> indices(variableCount + 1, 0);
-    indices[variableCount] = 1;
-    stepPoly(indices) = 1;
-    
-    vector<Poly> emptyPoint(variableCount, Poly(variableCount, 1, 0));
-    for (size_t i = 0; i < variableCount; ++i) {
-        indices = vector<int>(variableCount, 0);
-        indices[i] = 1;
-        emptyPoint[i](indices) = 1;
+
+    while (true){
+        gradientValue = evaluate2list(gradient, old_point);
+        step = getOptimalStep(old_point);
+        new_point = old_point - step * gradientValue;
+
+        logging();
+
+        if (calculateNorm(new_point - old_point) < EPSILON) break;
+        if (calculateNorm(gradientValue) < EPSILON) break;
+        if (abs(targetFunction.evaluate(old_point) - targetFunction.evaluate(new_point)) < EPSILON) break;
+
+        copy(new_point.begin(), new_point.end(), old_point.begin());
+        
     }
-    
-    vector<Poly> func = emptyPoint - stepPoly * grad; // Pk - step*grad f(Pk)
-    Poly extraPoly = poly.compose(func); // f(Pk - step*grad f(Pk))
-    
-    // Производные вспомогательной функции
-    Poly der1 = derivate(extraPoly, variableCount);
-    Poly der2 = derivate(der1, variableCount);
 
-
-    logFile << "Начало оптимизации" << endl;
-    logFile << "Целевая функция: " << poly << endl;
-    logFile << "Градиент: " << grad << endl;
-    logFile << "Целевая функция: " << poly << endl;
-    logFile << "Максимальный шаг: " << MAX_STEP << endl;
-    logFile << "Погрешность: " << EPSILON << endl;
-    logFile.close();
-
-    cout << "Начало оптимизации" << endl;
-    cout << "Градиент: " << grad << endl;
-    cout << "Целевая функция: " << poly << endl;
-    cout << "Максимальный шаг: " << MAX_STEP << endl;
-    cout << "Погрешность: " << EPSILON << endl;
-    cout.setf(ios::scientific);
-
-    cin.get();
-
-    size_t iteration = 1;
-    double step = 0;
-    
-    while (true) {
-        cout << "\nИтерация " << iteration << ":" << endl;
-        cout << "Текущая точка: (" << lastPoint[0] << ", " << lastPoint[1] << ")" << endl;
-        
-        ofstream logFile("output.log", ios::app);
-        logFile << "\n=== Итерация " << iteration << " ===" << endl;
-        logFile << "Текущая точка: (" << lastPoint[0] << ", " << lastPoint[1] << ")" << endl;
-        logFile << "Значение функции: " << poly.evaluate(lastPoint) << endl;
-        logFile << "Градиент в точке: (" << evaluate2list(grad, lastPoint)[0] << ", " 
-                << evaluate2list(grad, lastPoint)[1] << ")" << endl;
-        logFile.close();
-
-        step = getOptimalStep(lastPoint, extraPoly, der1, der2);
-        nextPoint = lastPoint - (step * evaluate2list(grad, lastPoint));
-
-        double currentValue = poly.evaluate(nextPoint);
-        if (std::isinf(currentValue) || std::isnan(currentValue)) {
-            cout << "Ошибка: значение функции стало бесконечным или NaN" << endl;
-            ofstream logFile("output.log", ios::app);
-            logFile << "Ошибка: значение функции стало бесконечным или NaN" << endl;
-            logFile.close();
-            return 1;
-        }
-        
-        cout << "Найденный шаг: " << step << endl;
-        cout << "Новая точка: (" << nextPoint[0] << ", " << nextPoint[1] << ")" << endl;
-        cout << "Значение функции: " << currentValue << endl;
-
-        if (checkStoppingCriteria(lastPoint, nextPoint, poly, grad)) {
-            cout << "\nОптимизация завершена!" << endl;
-            cout << "Найден минимум в точке: (" << nextPoint[0] << ", " << nextPoint[1] << ")" << endl;
-            cout << "Значение функции в минимуме: " << poly.evaluate(nextPoint) << endl;
-            
-            ofstream logFile("output.log", ios::app);
-            logFile << "\nОптимизация завершена!" << endl;
-            logFile << "Найден минимум в точке: (" << nextPoint[0] << ", " << nextPoint[1] << ")" << endl;
-            logFile << "Значение функции в минимуме: " << poly.evaluate(nextPoint) << endl;
-            logFile << "Общее количество итераций: " << iteration << endl;
-            logFile.close();
-            break;
-        }
-        
-        ++iteration;
-        lastPoint = nextPoint;
-    }
+    cout << endl << "END" << endl;
+    logFile.close(); 
     return 0;
 }

@@ -1,0 +1,158 @@
+Function:
+-4 - 2X0 + X0^3 + 3X1 - X0*X1 + X1^2
+EPSILON: 8.67362e-19
+MIN STEP: 8.67362e-19
+MAX STEP: 1
+
+== Iter: 0 ==
+
+	subIter: 0	direction: -0.374779, -0.332946, 
+	step: 0.340493
+	new_point: 0.680986, -1.02148, 
+	points delta: 1.22767
+	value: -6.37157
+	value delta: -2.37157
+
+	subIter: 1	direction: 0.0675216, -0.155724, 
+	step: 0.533989
+	new_point: 0.480859, -1.19927, 
+	points delta: 0.267694
+	value: -6.43341
+	value delta: -0.0618378
+
+== Iter: 1 ==
+
+	subIter: 0	direction: -0.0180149, -0.0226173, 
+	step: 0.292163
+	new_point: 0.512136, -1.2345, 
+	points delta: 0.0471152
+	value: -6.43723
+	value delta: -0.00381247
+
+	subIter: 1	direction: 0.0004373, -0.000364167, 
+	step: 0.679607
+	new_point: 0.499893, -1.24988, 
+	points delta: 0.0196508
+	value: -6.4375
+	value delta: -0.000274719
+
+== Iter: 2 ==
+
+	subIter: 0	direction: -2.41492e-05, -3.49234e-05, 
+	step: 0.279007
+	new_point: 0.500017, -1.24997, 
+	points delta: 0.000158739
+	value: -6.4375
+	value delta: -4.51402e-08
+
+	subIter: 1	direction: 2.96881e-07, -1.84968e-07, 
+	step: 0.717154
+	new_point: 0.5, -1.25, 
+	points delta: 3.04502e-05
+	value: -6.4375
+	value delta: -6.42833e-10
+
+== Iter: 3 ==
+
+	subIter: 0	direction: -3.8802e-08, 2.50979e-08, 
+	step: 0.31966
+	new_point: 0.5, -1.25, 
+	points delta: 1.11861e-07
+	value: -6.4375
+	value delta: -1.59872e-14
+
+	subIter: 1	direction: 1.26545e-08, -6.95764e-09, 
+	step: 0.587064
+	new_point: 0.5, -1.25, 
+	points delta: 2.71291e-08
+	value: -6.4375
+	value delta: -1.77636e-15
+
+== Iter: 4 ==
+
+	subIter: 0	direction: 6.578e-08, -4.00674e-08, 
+	step: 0.808057
+	new_point: 0.5, -1.25, 
+	points delta: 3.50329e-08
+	value: -6.4375
+	value delta: 1.77636e-15
+
+	subIter: 1	direction: 6.62332e-08, -3.94639e-08, 
+	step: 0.203179
+	new_point: 0.5, -1.25, 
+	points delta: 1.56493e-08
+	value: -6.4375
+	value delta: 8.88178e-16
+
+== Iter: 5 ==
+
+	subIter: 0	direction: 2.67386e-08, -1.66365e-08, 
+	step: 0.370816
+	new_point: 0.5, -1.25, 
+	points delta: 5.19194e-08
+	value: -6.4375
+	value delta: -1.77636e-15
+
+	subIter: 1	direction: -6.60868e-09, 4.06731e-09, 
+	step: 0.497347
+	new_point: 0.5, -1.25, 
+	points delta: 1.56623e-08
+	value: -6.4375
+	value delta: -1.77636e-15
+
+== Iter: 6 ==
+
+	subIter: 0	direction: -3.18293e-08, 1.95857e-08, 
+	step: 0.999633
+	new_point: 0.5, -1.25, 
+	points delta: 8.83095e-09
+	value: -6.4375
+	value delta: 8.88178e-16
+
+	subIter: 1	direction: -3.11326e-07, 1.91441e-07, 
+	step: 0.419147
+	new_point: 0.5, -1.25, 
+	points delta: 1.56646e-08
+	value: -6.4375
+	value delta: 1.77636e-15
+
+== Iter: 7 ==
+
+	subIter: 0	direction: -1.643e-08, 1.01948e-08, 
+	step: 0.438794
+	new_point: 0.5, -1.25, 
+	points delta: 3.5012e-08
+	value: -6.4375
+	value delta: -3.55271e-15
+
+	subIter: 1	direction: 7.59474e-09, -4.71581e-09, 
+	step: 0.809977
+	new_point: 0.5, -1.25, 
+	points delta: 1.56617e-08
+	value: -6.4375
+	value delta: 1.77636e-15
+
+== Iter: 8 ==
+
+	subIter: 0	direction: 3.51307e-08, -2.18656e-08, 
+	step: 0.999633
+	new_point: 0.5, -1.25, 
+	points delta: 9.77781e-09
+	value: -6.4375
+	value delta: -8.88178e-16
+
+	subIter: 1	direction: 2.92938e-07, -1.82543e-07, 
+	step: 0.378494
+	new_point: 0.5, -1.25, 
+	points delta: 1.56619e-08
+	value: -6.4375
+	value delta: 1.77636e-15
+
+== Iter: 9 ==
+
+	subIter: 0	direction: 1.02368e-08, -6.23898e-09, 
+	step: 0.503839
+	new_point: 0.5, -1.25, 
+	points delta: 4.14458e-08
+	value: -6.4375
+	value delta: 0
