@@ -1,0 +1,37 @@
+Found ffmpeg: /opt/yandex/browser/libffmpeg.so
+	avcodec: 3999080
+	avformat: 3998567
+	avutil: 3871588
+FFmpeg is considered to be safe.
+[5846:5846:0514/151146.829257:ERROR:brand_package_util.cc(145)] Path for partner_config is not specified
+[5846:5846:0514/151146.869284:ERROR:brand_config.cc(155)] It is not a proper JSON value
+[5846:5846:0514/151149.921585:ERROR:isolated_origin_util.cc(75)] Ignoring port number in isolated origin: chrome://custo
+[5846:5846:0514/151149.922465:ERROR:child_process_security_policy_impl.cc(2569)] Invalid isolated origin: 
+[5846:5846:0514/151151.500158:ERROR:chrome_browser_cloud_management_controller.cc(332)] Cloud management controller initialization aborted as CBCM is not enabled.
+[5846:5846:0514/151152.076404:ERROR:anti_tracking_service.cc(163)] [CORP] YandexAntiTracking. Status: This policy is disabled.
+libva error: /usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so init failed
+[5846:5846:0514/151157.521138:ERROR:welcome_config.cc(128)] Can't read 'start_date_utc' from server config welcome_experiment
+[5846:5846:0514/151157.521334:ERROR:welcome_config.cc(139)] Can't read 'end_date_utc' from server config welcome_experiment
+[5846:5846:0514/151157.521426:ERROR:welcome_config.cc(139)] Can't read 'end_date_utc' from server config welcome_experiment
+[5846:5846:0514/151206.687409:ERROR:shared_space_service_impl.cc(2844)] Trying to remove a non existed tab
+[5846:5875:0514/151212.430080:ERROR:checkin_request.cc(242)] Check-in request got net error: -2
+[5846:5875:0514/151212.430347:ERROR:registration_request.cc(274)] Registration URL fetching failed.
+[5846:5846:0514/151212.451075:ERROR:interface_endpoint_client.cc(725)] Message 770994143 rejected by interface blink.mojom.FrameWidgetHost
+[5846:5846:0514/151212.614156:ERROR:zygote_communication_linux.cc(302)] Failed to send GetTerminationStatus message to zygote
+[5846:5846:0514/151212.796866:ERROR:zygote_communication_linux.cc(302)] Failed to send GetTerminationStatus message to zygote
+[5846:5846:0514/151212.799094:ERROR:zygote_communication_linux.cc(302)] Failed to send GetTerminationStatus message to zygote
+[5846:5846:0514/151212.980591:ERROR:zygote_communication_linux.cc(302)] Failed to send GetTerminationStatus message to zygote
+[5846:5846:0514/151212.987865:ERROR:zygote_communication_linux.cc(302)] Failed to send GetTerminationStatus message to zygote
+[5846:5846:0514/151213.176869:ERROR:gpu_process_host.cc(1300)] GPU process launch failed: error_code=1002
+[5846:5846:0514/151213.184639:ERROR:gpu_process_host.cc(1300)] GPU process launch failed: error_code=1002
+[5846:5846:0514/151213.190397:ERROR:gpu_process_host.cc(1300)] GPU process launch failed: error_code=1002
+[5846:5846:0514/151213.194672:ERROR:gpu_process_host.cc(1300)] GPU process launch failed: error_code=1002
+[5846:5846:0514/151213.197252:ERROR:gpu_process_host.cc(1300)] GPU process launch failed: error_code=1002
+[5846:5846:0514/151213.226330:ERROR:gpu_process_host.cc(1300)] GPU process launch failed: error_code=1002
+[5846:5846:0514/151213.228694:ERROR:gpu_process_host.cc(1300)] GPU process launch failed: error_code=1002
+[5846:5846:0514/151213.230745:ERROR:gpu_process_host.cc(1300)] GPU process launch failed: error_code=1002
+[5846:5846:0514/151213.233950:ERROR:gpu_process_host.cc(1300)] GPU process launch failed: error_code=1002
+[5846:5846:0514/151213.234008:FATAL:gpu_data_manager_impl_private.cc(430)] GPU process isn't usable. Goodbye.
+[0514/151213.325450:ERROR:elf_dynamic_array_reader.h(64)] tag not found
+[0514/151213.327032:ERROR:elf_dynamic_array_reader.h(64)] tag not found
+[0514/151213.661803:ERROR:directory_reader_posix.cc(43)] opendir /home/serotonin/.config/yandex-browser/Crash Reports/attachments/a11fc6ff-9733-48ac-85d2-2d289280b2b8: No such file or directory (2)
