@@ -55,8 +55,8 @@ int main(){
 
     size_t i = 0;
     while (true){  
-        // i = (i < dimension - 1) ? i+1 : 0;
-        i = rand() % dimension;
+        i = (i < dimension - 1) ? i+1 : 0;
+        // i = rand() % dimension;
         
         new_point[i] = old_point[i] - STEP * gradient[i].evaluate(old_point);
         

@@ -329,7 +329,7 @@ public:
                             os << "*";
                         }
                         
-                        os << "X" << subInd;
+                        os << "X" << (subInd+1);
                         if (indices[subInd] > 1) {
                             os << "^" << indices[subInd];
                         }

@@ -20,7 +20,6 @@ Poly targetFunction(dimension, 2, 0);
 vector <double> point(dimension, 0);
 
 vector <double> getNextPointByNewton(vector <double> point, Poly function){
-
     vector <vector <double>> hess(dimension, vector <double>(dimension, 0));
     for (size_t i = 0; i < dimension; i++)
     {
@@ -36,6 +35,10 @@ vector <double> getNextPointByNewton(vector <double> point, Poly function){
     cout << "\nantigradient:\n" << antigradient << endl;
     cout << "\npoint:\n" << point << endl;
     cout << "\nhess matrix:\n" << hess << endl;
+
+    logFile << "\nantigradient:\n" << antigradient << endl;
+    logFile << "\npoint:\n" << point << endl;
+    logFile << "\nhess matrix:\n" << hess << endl;
 
     // Cholesky decomposition
     vector <vector <double>> L(dimension, vector <double>(dimension, 0));
@@ -75,21 +78,6 @@ vector <double> getNextPointByNewton(vector <double> point, Poly function){
 
     vector <double> result = point + delta;
 
-    return result; 
-}
-
-int main(){
-    targetFunction.setCoefs("2 2 0 100 0 2 1");
-    point[1] = 10;
-    size_t k = 0;
-    cout << "\nfunction:\n" << targetFunction << endl;
-
-    // int dimension = 4;
-    // Poly targetFunction(dimension, 2, 0);
-    // targetFunction.setCoefs("10 2 0 0 0 2 0 2 0 0 2.5 0 0 2 0 3 0 0 0 2 3.5 1 1 0 0 1 1 0 1 0 1 1 0 0 1 1 0 1 1 0 1 0 1 0 1 1 0 0 1 1 1");
-    // vector <double> point(dimension, 5);
-    
-
 /*     cout << "+++++++++++++++++++++++++" << endl;
     
     cout << "L: \n" << L << endl;
@@ -111,6 +99,20 @@ int main(){
     cout << "hess*nextPoint: " << hess*nextPoint << endl;
     cout << "antigradient: " << antigradient << endl; */
 
+    return result; 
+}
+
+int main(){
+    targetFunction.setCoefs("2 2 0 100 0 2 1");
+    point[1] = 10;
+    size_t k = 0;
+    cout << "\nfunction:\n" << targetFunction << endl;
+
+    // int dimension = 4;
+    // Poly targetFunction(dimension, 2, 0);
+    // targetFunction.setCoefs("10 2 0 0 0 2 0 2 0 0 2.5 0 0 2 0 3 0 0 0 2 3.5 1 1 0 0 1 1 0 1 0 1 1 0 0 1 1 0 1 1 0 1 0 1 0 1 1 0 0 1 1 1");
+    // vector <double> point(dimension, 5);
+
     while(targetFunction.evaluate(point) > 0)
     {
         vector <double> nextPoint = getNextPointByNewton(point, targetFunction);
@@ -121,6 +123,14 @@ int main(){
         cout << "new point:\n" << nextPoint << endl;
         cout << "new value: " << targetFunction.evaluate(nextPoint) << endl;
         cout << "++++++++++++++++++++++++++++++++++++" << endl;
+
+        logFile << "iter: " << k << endl;
+        logFile << "old point:\n" << point << endl;
+        logFile << "old value: " << targetFunction.evaluate(point) << endl << endl;
+        logFile << "new point:\n" << nextPoint << endl;
+        logFile << "new value: " << targetFunction.evaluate(nextPoint) << endl;
+        logFile << "++++++++++++++++++++++++++++++++++++" << endl;
+        
 
         copy(nextPoint.begin(), nextPoint.end(), point.begin());
         k++;
