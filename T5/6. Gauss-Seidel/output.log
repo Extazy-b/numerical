@@ -4,7 +4,7 @@ EPSILON: 8.67362e-19
 MIN STEP: 8.67362e-19
 MAX STEP: 1
 
-== Iter: 2 ==
+== Iter: 0 ==
 step: 0.340493
 new point: 0, -1.02148, 
 points delta: 1.02148
@@ -20,322 +20,202 @@ value: -6.33887
 gradientValue: -0.97852, 0.957041, 
 gradientNotm: 1.36873
 
-== Iter: 1 ==
+== Iter: 2 ==
 step: 0.297641
-new point: 0.542832, -1.02148, 
-points delta: 0.161199
-value: -6.39224
+new point: 0.381633, -1.19274, 
+points delta: 0.171265
+value: -6.40809
 gradientValue: -0.54159, 0.575408, 
 gradientNotm: 0.790198
 
-== Iter: 1 ==
-step: 0.39978
-new point: 0.580619, -1.02148, 
-points delta: 0.0377876
-value: -6.39343
-gradientValue: -0.0945209, 0.414209, 
-gradientNotm: 0.424856
+== Iter: 3 ==
+step: 0.298827
+new point: 0.492296, -1.19274, 
+points delta: 0.110663
+value: -6.43369
+gradientValue: -0.370325, 0.232878, 
+gradientNotm: 0.437462
 
-== Iter: 1 ==
-step: 0.544039
-new point: 0.562755, -1.02148, 
-points delta: 0.0178644
-value: -6.39346
-gradientValue: 0.0328366, 0.376421, 
-gradientNotm: 0.377851
+== Iter: 4 ==
+step: 0.310063
+new point: 0.492296, -1.23064, 
+points delta: 0.0378944
+value: -6.43689
+gradientValue: -0.08019, 0.122215, 
+gradientNotm: 0.146174
 
-== Iter: 1 ==
-step: 0.464825
-new point: 0.575975, -1.02148, 
-points delta: 0.0132198
-value: -6.39354
-gradientValue: -0.0284404, 0.394285, 
-gradientNotm: 0.39531
+== Iter: 5 ==
+step: 0.290243
+new point: 0.504572, -1.23064, 
+points delta: 0.012276
+value: -6.43718
+gradientValue: -0.0422956, 0.0464263, 
+gradientNotm: 0.0628038
 
-== Iter: 1 ==
-step: 0.522019
-new point: 0.567246, -1.02148, 
-points delta: 0.00872868
-value: -6.39356
-gradientValue: 0.016721, 0.381066, 
-gradientNotm: 0.381432
+== Iter: 6 ==
+step: 0.426544
+new point: 0.504572, -1.24521, 
+points delta: 0.0145666
+value: -6.43747
+gradientValue: -0.00558292, 0.0341503, 
+gradientNotm: 0.0346036
 
-== Iter: 1 ==
-step: 0.483286
-new point: 0.573633, -1.02148, 
-points delta: 0.00638684
-value: -6.39357
-gradientValue: -0.0132155, 0.389794, 
-gradientNotm: 0.390018
+== Iter: 7 ==
+step: 0.520553
+new point: 0.499895, -1.24521, 
+points delta: 0.00467649
+value: -6.43748
+gradientValue: 0.0089837, 0.00501706, 
+gradientNotm: 0.0102897
 
-== Iter: 1 ==
-step: 0.511236
-new point: 0.569214, -1.02148, 
-points delta: 0.00441932
-value: -6.39358
-gradientValue: 0.00864438, 0.383407, 
-gradientNotm: 0.383505
+== Iter: 8 ==
+step: 0.328524
+new point: 0.499895, -1.24839, 
+points delta: 0.00318456
+value: -6.4375
+gradientValue: -0.00510845, 0.00969355, 
+gradientNotm: 0.0109572
 
-== Iter: 1 ==
-step: 0.491869
-new point: 0.572415, -1.02148, 
-points delta: 0.00320081
-value: -6.39358
-gradientValue: -0.00650744, 0.387827, 
-gradientNotm: 0.387881
+== Iter: 9 ==
+step: 0.320846
+new point: 0.500513, -1.24839, 
+points delta: 0.000617272
+value: -6.4375
+gradientValue: -0.00192389, 0.00332443, 
+gradientNotm: 0.00384098
 
-== Iter: 1 ==
-step: 0.505758
-new point: 0.570161, -1.02148, 
-points delta: 0.00225314
-value: -6.39358
-gradientValue: 0.00445497, 0.384626, 
-gradientNotm: 0.384652
+== Iter: 10 ==
+step: 0.486844
+new point: 0.500513, -1.24971, 
+points delta: 0.00131796
+value: -6.4375
+gradientValue: -7.13152e-05, 0.00270715, 
+gradientNotm: 0.00270809
 
-== Iter: 1 ==
-step: 0.495708
-new point: 0.571781, -1.02148, 
-points delta: 0.00162006
-value: -6.39358
-gradientValue: -0.00326817, 0.386879, 
-gradientNotm: 0.386893
+== Iter: 11 ==
+step: 0.346704
+new point: 0.50008, -1.24971, 
+points delta: 0.000432218
+value: -6.4375
+gradientValue: 0.00124665, 7.12286e-05, 
+gradientNotm: 0.00124868
 
-== Iter: 1 ==
-step: 0.503106
-new point: 0.570633, -1.02148, 
-points delta: 0.00114802
-value: -6.39358
-gradientValue: 0.00228187, 0.385259, 
-gradientNotm: 0.385266
+== Iter: 12 ==
+step: 0.452403
+new point: 0.50008, -1.24994, 
+points delta: 0.000227761
+value: -6.4375
+gradientValue: -5.07762e-05, 0.000503447, 
+gradientNotm: 0.000506001
 
-== Iter: 1 ==
-step: 0.498081
-new point: 0.571457, -1.02148, 
-points delta: 0.000823169
-value: -6.39358
-gradientValue: -0.00165268, 0.386407, 
-gradientNotm: 0.386411
+== Iter: 13 ==
+step: 0.412203
+new point: 0.500007, -1.24994, 
+points delta: 7.29534e-05
+value: -6.4375
+gradientValue: 0.000176984, 4.79256e-05, 
+gradientNotm: 0.000183359
 
-== Iter: 1 ==
-step: 0.501466
-new point: 0.570871, -1.02148, 
-points delta: 0.000585571
-value: -6.39358
-gradientValue: 0.00116772, 0.385584, 
-gradientNotm: 0.385586
+== Iter: 14 ==
+step: 0.366804
+new point: 0.500007, -1.24998, 
+points delta: 4.4339e-05
+value: -6.4375
+gradientValue: -4.18951e-05, 0.000120879, 
+gradientNotm: 0.000127933
 
-== Iter: 1 ==
-step: 0.498814
-new point: 0.57129, -1.02148, 
-points delta: 0.000418517
-value: -6.39358
-gradientValue: -0.000839024, 0.386169, 
-gradientNotm: 0.38617
+== Iter: 15 ==
+step: 0.53992
+new point: 0.500006, -1.24998, 
+points delta: 1.31951e-06
+value: -6.4375
+gradientValue: 2.44389e-06, 3.22011e-05, 
+gradientNotm: 3.22937e-05
 
-== Iter: 1 ==
-step: 0.500733
-new point: 0.570992, -1.02148, 
-points delta: 0.000297944
-value: -6.39358
-gradientValue: 0.000595016, 0.385751, 
-gradientNotm: 0.385751
+== Iter: 16 ==
+step: 0.478714
+new point: 0.500006, -1.25, 
+points delta: 1.60468e-05
+value: -6.4375
+gradientValue: -1.51468e-06, 3.35206e-05, 
+gradientNotm: 3.35548e-05
 
-== Iter: 1 ==
-step: 0.499547
-new point: 0.571204, -1.02148, 
-points delta: 0.000212803
-value: -6.39358
-gradientValue: -0.000425992, 0.386049, 
-gradientNotm: 0.386049
+== Iter: 17 ==
+step: 0.358674
+new point: 0.500001, -1.25, 
+points delta: 5.21228e-06
+value: -6.4375
+gradientValue: 1.45321e-05, 1.42705e-06, 
+gradientNotm: 1.4602e-05
 
-== Iter: 1 ==
-step: 0.500453
-new point: 0.571053, -1.02148, 
-points delta: 0.000151736
-value: -6.39358
-gradientValue: 0.000303196, 0.385836, 
-gradientNotm: 0.385836
+== Iter: 18 ==
+step: 0.424905
+new point: 0.500001, -1.25, 
+points delta: 2.82109e-06
+value: -6.4375
+gradientValue: -1.10486e-06, 6.63934e-06, 
+gradientNotm: 6.73064e-06
 
-== Iter: 1 ==
-step: 0.499547
-new point: 0.571161, -1.02148, 
-points delta: 0.000108285
-value: -6.39358
-gradientValue: -0.000216767, 0.385988, 
-gradientNotm: 0.385988
+== Iter: 19 ==
+step: 0.537094
+new point: 0.5, -1.25, 
+points delta: 9.21775e-07
+value: -6.4375
+gradientValue: 1.71623e-06, 9.97161e-07, 
+gradientNotm: 1.98488e-06
 
-== Iter: 1 ==
-step: 0.5
-new point: 0.571084, -1.02148, 
-points delta: 7.71438e-05
-value: -6.39358
-gradientValue: 0.000154288, 0.38588, 
-gradientNotm: 0.38588
+== Iter: 20 ==
+step: 0.329257
+new point: 0.5, -1.25, 
+points delta: 6.31823e-07
+value: -6.4375
+gradientValue: -1.0491e-06, 1.91894e-06, 
+gradientNotm: 2.18699e-06
 
-== Iter: 1 ==
-step: 0.5
-new point: 0.571139, -1.02148, 
-points delta: 5.50318e-05
-value: -6.39358
-gradientValue: -0.000110064, 0.385957, 
-gradientNotm: 0.385957
+== Iter: 21 ==
+step: 0.312996
+new point: 0.5, -1.25, 
+points delta: 1.30607e-07
+value: -6.4375
+gradientValue: -4.17279e-07, 6.5529e-07, 
+gradientNotm: 7.7687e-07
 
-== Iter: 1 ==
-step: 0.5
-new point: 0.5711, -1.02148, 
-points delta: 3.92561e-05
-value: -6.39358
-gradientValue: 7.85122e-05, 0.385902, 
-gradientNotm: 0.385902
+== Iter: 22 ==
+step: 0.502653
+new point: 0.5, -1.25, 
+points delta: 2.63733e-07
+value: -6.4375
+gradientValue: -2.54593e-08, 5.24683e-07, 
+gradientNotm: 5.25301e-07
 
-== Iter: 1 ==
-step: 0.5
-new point: 0.571128, -1.02148, 
-points delta: 2.80036e-05
-value: -6.39358
-gradientValue: -5.60073e-05, 0.385941, 
-gradientNotm: 0.385941
+== Iter: 23 ==
+step: 0.329257
+new point: 0.5, -1.25, 
+points delta: 7.84534e-08
+value: -6.4375
+gradientValue: 2.38274e-07, -2.78346e-09, 
+gradientNotm: 2.3829e-07
 
-== Iter: 1 ==
-step: 0.5
-new point: 0.571108, -1.02148, 
-points delta: 1.99761e-05
-value: -6.39358
-gradientValue: 3.99523e-05, 0.385913, 
-gradientNotm: 0.385913
+== Iter: 24 ==
+step: 0.634209
+new point: 0.5, -1.25, 
+points delta: 4.79906e-08
+value: -6.4375
+gradientValue: 2.91382e-09, 7.567e-08, 
+gradientNotm: 7.57261e-08
 
-== Iter: 1 ==
-step: 0.5
-new point: 0.571122, -1.02148, 
-points delta: 1.425e-05
-value: -6.39358
-gradientValue: -2.85001e-05, 0.385933, 
-gradientNotm: 0.385933
+== Iter: 25 ==
+step: 0.645165
+new point: 0.5, -1.25, 
+points delta: 3.28417e-08
+value: -6.4375
+gradientValue: 5.09044e-08, -2.03111e-08, 
+gradientNotm: 5.48069e-08
 
-== Iter: 1 ==
-step: 0.5
-new point: 0.571112, -1.02148, 
-points delta: 1.01652e-05
-value: -6.39358
-gradientValue: 2.03304e-05, 0.385919, 
-gradientNotm: 0.385919
-
-== Iter: 1 ==
-step: 0.5
-new point: 0.571119, -1.02148, 
-points delta: 7.25133e-06
-value: -6.39358
-gradientValue: -1.45027e-05, 0.385929, 
-gradientNotm: 0.385929
-
-== Iter: 1 ==
-step: 0.5
-new point: 0.571114, -1.02148, 
-points delta: 5.17271e-06
-value: -6.39358
-gradientValue: 1.03454e-05, 0.385922, 
-gradientNotm: 0.385922
-
-== Iter: 1 ==
-step: 0.5
-new point: 0.571117, -1.02148, 
-points delta: 3.68995e-06
-value: -6.39358
-gradientValue: -7.3799e-06, 0.385927, 
-gradientNotm: 0.385927
-
-== Iter: 1 ==
-step: 0.5
-new point: 0.571115, -1.02148, 
-points delta: 2.63221e-06
-value: -6.39358
-gradientValue: 5.26443e-06, 0.385923, 
-gradientNotm: 0.385923
-
-== Iter: 1 ==
-step: 0.5
-new point: 0.571117, -1.02148, 
-points delta: 1.87769e-06
-value: -6.39358
-gradientValue: -3.75537e-06, 0.385926, 
-gradientNotm: 0.385926
-
-== Iter: 1 ==
-step: 0.5
-new point: 0.571115, -1.02148, 
-points delta: 1.33944e-06
-value: -6.39358
-gradientValue: 2.67888e-06, 0.385924, 
-gradientNotm: 0.385924
-
-== Iter: 1 ==
-step: 0.5
-new point: 0.571116, -1.02148, 
-points delta: 9.55488e-07
-value: -6.39358
-gradientValue: -1.91098e-06, 0.385925, 
-gradientNotm: 0.385925
-
-== Iter: 1 ==
-step: 0.5
-new point: 0.571116, -1.02148, 
-points delta: 6.81595e-07
-value: -6.39358
-gradientValue: 1.36319e-06, 0.385924, 
-gradientNotm: 0.385924
-
-== Iter: 1 ==
-step: 0.5
-new point: 0.571116, -1.02148, 
-points delta: 4.86215e-07
-value: -6.39358
-gradientValue: -9.72429e-07, 0.385925, 
-gradientNotm: 0.385925
-
-== Iter: 1 ==
-step: 0.5
-new point: 0.571116, -1.02148, 
-points delta: 3.4684e-07
-value: -6.39358
-gradientValue: 6.9368e-07, 0.385924, 
-gradientNotm: 0.385924
-
-== Iter: 1 ==
-step: 0.5
-new point: 0.571116, -1.02148, 
-points delta: 2.47418e-07
-value: -6.39358
-gradientValue: -4.94835e-07, 0.385925, 
-gradientNotm: 0.385925
-
-== Iter: 1 ==
-step: 0.5
-new point: 0.571116, -1.02148, 
-points delta: 1.76495e-07
-value: -6.39358
-gradientValue: 3.5299e-07, 0.385924, 
-gradientNotm: 0.385924
-
-== Iter: 1 ==
-step: 0.5
-new point: 0.571116, -1.02148, 
-points delta: 1.25902e-07
-value: -6.39358
-gradientValue: -2.51804e-07, 0.385925, 
-gradientNotm: 0.385925
-
-== Iter: 1 ==
-step: 0.5
-new point: 0.571116, -1.02148, 
-points delta: 8.98121e-08
-value: -6.39358
-gradientValue: 1.79624e-07, 0.385925, 
-gradientNotm: 0.385925
-
-== Iter: 1 ==
-step: 0.5
-new point: 0.571116, -1.02148, 
-points delta: 6.40673e-08
-value: -6.39358
-gradientValue: -1.28135e-07, 0.385925, 
-gradientNotm: 0.385925
+== Iter: 26 ==
+step: 0.731043
+new point: 0.5, -1.25, 
+points delta: 9.16039e-09
+value: -6.4375
+gradientValue: -4.76208e-08, 1.25306e-08, 
+gradientNotm: 4.92418e-08

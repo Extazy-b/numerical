@@ -32,7 +32,8 @@ vector<double> gradientValue(dimension, 0);
 double step;
 
 
-size_t i;
+size_t i = 0;
+size_t k = 0;
 
 Poly getDirectionFunction(vector<double> point){
     Poly function(1, 0, 0);
@@ -72,9 +73,7 @@ double getOptimalStep(vector <double> point){
 }
 
 void logging(){
-    i++;
-
-    cout << endl << "== Iter: " << i << " ==" << endl;
+    cout << endl << "== Iter: " << k << " ==" << endl;
     cout << "step: " << step << endl;
     cout << "new point: " << new_point << endl;
     cout << "points delta: " << calculateNorm(new_point - old_point) << endl;
@@ -82,7 +81,7 @@ void logging(){
     cout << "gradientValue: " << gradientValue << endl;
     cout << "gradientNotm: " << calculateNorm(gradientValue) << endl;
 
-    logFile << endl << "== Iter: " << i << " ==" << endl;
+    logFile << endl << "== Iter: " << k << " ==" << endl;
     logFile << "step: " << step << endl;
     logFile << "new point: " << new_point << endl;
     logFile << "points delta: " << calculateNorm(new_point - old_point) << endl;
@@ -127,7 +126,7 @@ int main(){
         if (abs(targetFunction.evaluate(old_point) - targetFunction.evaluate(new_point)) < EPSILON) break;
 
         copy(new_point.begin(), new_point.end(), old_point.begin());
-        
+        k++;       
     }
 
     cout << endl << "END" << endl;
